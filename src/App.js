@@ -11,8 +11,8 @@ function App() {
   const [newEmailAddress, setNewEmailAddress] = useState('')
   const [stats, setStats] = useState(null)
   const [showStats, setShowStats] = useState(false)
-  const [newPhoneType, setNewPhoneType] = useState('Mobile') 
-  const [newEmailType, setNewEmailType] = useState('Personal') 
+  const [newPhoneType, setNewPhoneType] = useState('Mobile')
+  const [newEmailType, setNewEmailType] = useState('Personal')
   const [phoneError, setPhoneError] = useState('')
   const [emailError, setEmailError] = useState('')
 
@@ -46,7 +46,7 @@ function App() {
     }
 
     calculateStats()
-  }, [contacts]) 
+  }, [contacts])
 
   const saveContactsToLocalStorage = (updatedContacts) => {
     localStorage.setItem('contacts', JSON.stringify(updatedContacts))
@@ -55,14 +55,14 @@ function App() {
 
   const addContact = (name) => {
     const newContact = {
-      id: Date.now(), 
+      id: Date.now(),
       name,
       phones: [],
       emails: [],
     }
     const updatedContacts = [...contacts, newContact]
     saveContactsToLocalStorage(updatedContacts)
-    setNewContactName('')  
+    setNewContactName('')
   }
 
   const deleteContact = (contactId) => {
@@ -98,8 +98,8 @@ function App() {
       return contact
     })
     saveContactsToLocalStorage(updatedContacts)
-    setNewPhoneNumber('') 
-    setPhoneError('') 
+    setNewPhoneNumber('')
+    setPhoneError('')
   }
 
   const addEmailAddress = (contactId, type, address) => {
@@ -119,8 +119,8 @@ function App() {
       return contact
     })
     saveContactsToLocalStorage(updatedContacts)
-    setNewEmailAddress('') 
-    setEmailError('') 
+    setNewEmailAddress('')
+    setEmailError('')
   }
 
   const deletePhoneNumber = (contactId, phoneId) => {
@@ -205,6 +205,7 @@ function App() {
             className='w-1/3 p-2 rounded bg-gray-200 text-black hover:bg-gray-300 transition'
             onClick={() => addContact(newContactName)}>
             {/* Esteban Clinets list */}
+            {/* testing */}
             Create Client
           </button>
         </div>
@@ -220,7 +221,7 @@ function App() {
                 <button
                   className='bg-red-400 text-white rounded p-2 hover:bg-red-500 transition'
                   onClick={(e) => {
-                    e.stopPropagation() 
+                    e.stopPropagation()
                     deleteContact(contact.id)
                   }}>
                   Delete
@@ -282,8 +283,8 @@ function App() {
                             `#phone-type-${contact.id}`
                           ).value
                           addPhoneNumber(contact.id, type, number)
-                          setNewPhoneNumber('') 
-                          setNewPhoneType('Mobile') 
+                          setNewPhoneNumber('')
+                          setNewPhoneType('Mobile')
                         }}>
                         Add
                       </button>
@@ -312,13 +313,16 @@ function App() {
                         onChange={(e) => setNewEmailType(e.target.value)}
                         className='w-1/1 mr-2 p-2 rounded border-2'
                         id={`email-type-${currentContact}`}>
-                        {['Email Personal', 'Email Work', 'Email Other'].map(
-                          (type) => (
-                            <option key={type} value={type}>
-                              {type}
-                            </option>
-                          )
-                        )}
+                        {[
+                          'Email Personal',
+                          'Email Work',
+                          'Email Other',
+                          'Email Private ',
+                        ].map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
                       </select>
                       <button
                         className='w-1/4 bg-gray-200 text-black rounded p-2 hover:bg-gray-300 transition'
@@ -330,8 +334,8 @@ function App() {
                             `#email-type-${currentContact}`
                           ).value
                           addEmailAddress(currentContact, type, address)
-                          setNewEmailAddress('') 
-                          setNewEmailType('Personal') 
+                          setNewEmailAddress('')
+                          setNewEmailType('Personal')
                         }}>
                         Add
                       </button>
