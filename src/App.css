@@ -1,0 +1,27 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+error-message-container {
+  height: 22px; /* Set a fixed height for the error container */
+  margin-bottom: 4px;
+}
+
+.error-message {
+  background-color: red;
+  color: white;
+    line-height: 1.2; /* Adjust line-height */
+
+  padding: 1px 5px; /* Reduced padding */
+  border-radius: 8px;
+  font-size: 0.7rem; /* Smaller font size */
+  text-align: left; /* Align text to the left */
+  max-width: 60%; /* Control the width of the error message */
+  margin-bottom: 1px;
+    display: inline-block; /* Make the box only as wide as the content */
+
+}
